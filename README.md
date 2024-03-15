@@ -2,6 +2,7 @@ env setup:
 ```bash
 $ $HADOOP_HOME/bin/hadoop namenode -format
 $ $HADOOP_HOME/sbin/start-dfs.sh
+$ $HADOOP_HOME/bin/hadoop fs -put localFile.txt /hdfsFile.txt
 ```
 
 run job history server (but failed):
