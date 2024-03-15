@@ -9,6 +9,7 @@ public class RandomPartitioner<K, V> extends Partitioner<K, V> {
 
     public int getPartition(K key, V value, int numReduceTasks) {
         Integer sequence = app_version_random.getOrDefault(key, rand.nextInt()); 
+        app_version_random.put(key, sequence);
         return (sequence & Integer.MAX_VALUE) % numReduceTasks;
     }
 }
