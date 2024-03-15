@@ -8,7 +8,7 @@ run job history server (but failed):
 ```bash
 $ $HADOOP_HOME/bin/mapred historyserver
 ```
-open <master-ip>:19888
+open master-ip:19888
 
 run map reduce:
 ```bash
