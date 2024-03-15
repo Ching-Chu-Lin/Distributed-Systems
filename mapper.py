@@ -8,6 +8,8 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 sia = SentimentIntensityAnalyzer()
 for line in sys.stdin:
-    app_version, review_text = line.strip().split(',')
+    columns = line.strip().split(',')
+    review_text = columns[0]
+    app_version = columns[1]
     sentiment = sia.polarity_scores(review_text)
     print(f'{app_version},{sentiment["compound"]}')
