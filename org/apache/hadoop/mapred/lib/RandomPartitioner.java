@@ -1,9 +1,11 @@
+package org.apache.hadoop.mapred.lib;
+
 import java.util.HashMap;
 import java.util.Random;
 
-import org.apache.hadoop.mapreduce.Partitioner;
+import org.apache.hadoop.mapred.lib.HashPartitioner;
 
-public class RandomPartitioner<K, V> extends Partitioner<K, V> {
+public class RandomPartitioner<K, V> extends HashPartitioner<K, V> {
     private Random rand = new Random();
     private HashMap<K, Integer> app_version_random = new HashMap<K, Integer>();
 
