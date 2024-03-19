@@ -1,12 +1,32 @@
-env setup:
+# Env Setup
 ```bash
 $ $HADOOP_HOME/bin/hadoop namenode -format
 $ $HADOOP_HOME/sbin/start-dfs.sh
 $ $HADOOP_HOME/bin/hadoop fs -put localFile.txt /hdfsFile.txt
 ```
-open master-ip:9870
 
-run job history server (but failed):
+### Insert Customize Partitioner to MapReduce Streaming
+1. Note that Customized Partitioner must under `org.apache.hadoop.mapred.lib` package
+2. `Compile to `.class` file and make to `jar` file.
+```bash
+$ $HADOOP_HOME/bin/hadoop com.sun.tools.javac.Main <path to partitioner>
+$ jar cf <partitioner jar> <partitioner class> 
+```
+3. Put jar file under the class path OR Set class path
+```bash
+$ export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:<…>
+$ source .profile 
+$ $HADOOP_HOME/bin/hadoop classpath
+```
+
+# Run MapReduce
+```bash
+$ $HADOOP_HOME/bin/bin/mapred streaming -D mapreduce.job.reduces=5 -file <mapper executable/ script> -mapper <mapper executable/ script> -file <reducer executable/ script> -reducer <reducer executable/ script> -input <input file> -output <output dir> -partitioner org.apache.hadoop.mapred.lib.RandomPartitioner
+```
+
+
+# Notes
+run job history server but failed:
 ```bash
 $ $HADOOP_HOME/bin/mapred historyserver
 ```
@@ -17,13 +37,14 @@ or
 $ $HADOOP_HOME/sbin/start-all.sh
 ```
 
-open master-ip:19888
+ports:
+1. jobhistory server: 19888
+2. resource manager: 8088
 
-tried references:
-1. https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.0.0.2/bk_installing_manually_book/content/rpm-chap4-4.html
-2. 
-
-run map reduce:
-```bash
-$ $HADOOP_HOME/bin/mapred streaming -D mapreduce.job.reduces=5 -file ~/mapper.py -mapper ~/mapper.py -file ~/reducer.py -reducer ~/reducer.py -input <input file> -output <output dir> -partitioner org.apache.hadoop.mapred.lib.KeyFieldBasedPartitioner
-```
+### Reference Tried
+- [x] https://www.youtube.com/watch?v=Z_5pJMCoeM8
+- [x] https://www.youtube.com/watch?v=JgYh5SuV37M
+- [x] https://stackoverflow.com/questions/42884289/job-history-server-in-hadoop-2-7-1-is-not-working
+    outcome: no running or completed jobs
+- [x] https://stackoverflow.com/questions/22921102/how-to-find-total-number-of-nodes-on-which-hadoop-is-installed 
+    outcome: exception error
