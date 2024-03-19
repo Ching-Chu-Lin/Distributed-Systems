@@ -7,7 +7,7 @@ $ $HADOOP_HOME/bin/hadoop fs -put localFile.txt /hdfsFile.txt
 
 ### Insert Customize Partitioner to MapReduce Streaming
 1. Note that Customized Partitioner must under `org.apache.hadoop.mapred.lib` package
-2. `Compile to `.class` file and make to `jar` file.
+2. Compile to `.class` file and make to `jar` file.
 ```bash
 $ $HADOOP_HOME/bin/hadoop com.sun.tools.javac.Main <path to partitioner>
 $ jar cf <partitioner jar> <partitioner class> 
