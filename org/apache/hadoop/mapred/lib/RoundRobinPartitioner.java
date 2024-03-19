@@ -1,9 +1,12 @@
+package org.apache.hadoop.mapred.lib;
+//package org.apache.hadoop.mapreduce.lib.partition;
+
 import java.util.HashMap;
 
-import org.apache.hadoop.mapreduce.Partitioner;
+import org.apache.hadoop.mapred.lib.HashPartitioner;
 
 
-public class RoundRobinPartitioner<K, V> extends Partitioner<K, V> {
+public class RoundRobinPartitioner<K, V> extends  HashPartitioner<K, V> {
     private HashMap<K, Integer> app_version_counter = new HashMap<K, Integer>();
 
     public int getPartition(K key, V value, int numReduceTasks) {
