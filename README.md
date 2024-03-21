@@ -21,7 +21,7 @@ $ $HADOOP_HOME/bin/hadoop classpath
 
 # Run MapReduce
 ```bash
-$ $HADOOP_HOME/bin/bin/mapred streaming -D mapreduce.job.reduces=5 -file <mapper executable/ script> -mapper <mapper executable/ script> -file <reducer executable/ script> -reducer <reducer executable/ script> -input <input file> -output <output dir> -partitioner org.apache.hadoop.mapred.lib.RandomPartitioner
+$ $HADOOP_HOME/bin/mapred streaming -D mapreduce.job.reduces=5 -file <mapper executable/ script> -mapper <mapper executable/ script> -file <reducer executable/ script> -reducer <reducer executable/ script> -input <input file> -output <output dir> -partitioner org.apache.hadoop.mapred.lib.RandomPartitioner
 ```
 
 
