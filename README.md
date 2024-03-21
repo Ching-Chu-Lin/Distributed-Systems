@@ -48,3 +48,4 @@ ports:
     outcome: no running or completed jobs
 - [x] https://stackoverflow.com/questions/22921102/how-to-find-total-number-of-nodes-on-which-hadoop-is-installed 
     outcome: exception error
+- and many more ...
